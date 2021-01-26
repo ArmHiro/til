@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import { useState, useEffect } from 'react';
-import {MdList} from './mdList'
+import {MdList, Props as MdListProps} from '../components/mdList'
 
 const fetchMd = async (filename: string) => {
   const res = await fetch(
@@ -28,27 +28,30 @@ const NUM_OF_MD_IN_PAGE = 10
 export default function Home() {
   const [mdNameList, setMdNameList] = useState([] as string[])
   const [index, setIndex] = useState(0)
-  const [mdList, setMdList] = useState([] as string[])
+  const [mdList, setMdList] = useState([] as MdListProps[])
 
-  useEffect(async () => {
-    const list = await fetchMdList()
+  useEffect(() => {
+    (async () => {
+      const list = await fetchMdList()
 
-    setMdNameList(list)
-
+      setMdNameList(list)
+    })()
     
   }, []);
 
-  useEffect(async () => {
-    const mds = await Promise.all(
-      mdNameList.slice(
-        index * NUM_OF_MD_IN_PAGE,
-        (index + 1) * NUM_OF_MD_IN_PAGE
-      ).map(async name => ({
-        filename: name,
-        markdown: await fetchMd(name)
-      }))
-    )
-    setMdList(mds)
+  useEffect(() => {
+    (async () => {
+      const mds = await Promise.all(
+        mdNameList.slice(
+          index * NUM_OF_MD_IN_PAGE,
+          (index + 1) * NUM_OF_MD_IN_PAGE
+        ).map(async name => ({
+          filename: name,
+          markdown: await fetchMd(name)
+        } as MdListProps))
+      )
+      setMdList(mds)
+    })()
   }, [mdNameList, index])
 
   return (
