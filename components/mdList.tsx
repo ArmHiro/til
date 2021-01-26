@@ -24,7 +24,7 @@ const parseMd = (md: string) => {
           [key]: value
         }
       }, {})
-  console.log(headers)
+
   const mdHtml =
     marked(
       splitted.slice(splitter + 1).join('\n')
