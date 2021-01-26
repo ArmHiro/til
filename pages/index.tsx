@@ -63,7 +63,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Today I Leanred!
+          Today I Learned!
         </h1>
 
         <p className={styles.description}>
