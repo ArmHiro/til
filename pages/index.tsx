@@ -5,7 +5,7 @@ import {MdList, Props as MdListProps} from '../components/mdList'
 
 const fetchMd = async (filename: string) => {
   const res = await fetch(
-    `/md/${filename}`
+    `md/${filename}`
   )
   const text = await res.text()
 
@@ -14,7 +14,7 @@ const fetchMd = async (filename: string) => {
 
 const fetchMdList = async () => {
   const res = await fetch(
-    '/md/md.lst'
+    'md/md.lst'
   )
   const text = await res.text()
   return text
