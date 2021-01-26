@@ -81,7 +81,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-        Written by Hirofumi Arimoto
+        Written in&nbsp;<a href="https://github.com/ArmHiro/til">GitHub</a>&nbsp;by Hirofumi Arimoto
       </footer>
     </div>
   )
