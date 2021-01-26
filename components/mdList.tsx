@@ -37,7 +37,7 @@ export function MdList(props: Props) {
   const [headers, mdHtml] = parseMd(markdown)
 
   return (
-    <div className={styles.card}>
+    <div className={styles.card} key={filename}>
       <h3>{headers.title} &rarr; </h3>
       <p>{headers.abstract}</p>
     </div>
