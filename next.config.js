@@ -1,12 +1,9 @@
 const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
 
-module.exports = (phase, { defaultConfig }) => {
-  if (phase === PHASE_DEVELOPMENT_SERVER) {
-    return {
+module.exports = (phase, { defaultConfig }) =>
+  phase === PHASE_DEVELOPMENT_SERVER ?
+    {}
+    :
+    {
+      basePath: '/til',
     }
-  }
-
-  return {
-    basePath: '/til',
-  }
-}
